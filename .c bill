@@ -1,0 +1,61 @@
+#include <stdio.h>
+int main()
+{
+    int consumerNo;
+    char consumerName[50];
+    int units;
+    float billAmount;
+    float surcharge;
+    float totalBill;
+    printf("=====================================\n");
+    printf("      ELECTRICITY BILL SYSTEM\n");
+    printf("=====================================\n");
+    printf("Enter Consumer Number : ");
+    scanf("%d", &consumerNo);
+    printf("Enter Consumer Name   : ");
+    scanf("%s", consumerName);
+    printf("Enter Units Consumed  : ");
+    scanf("%d", &units);
+    if(units <= 100)
+    {
+        billAmount = units * 1.50;
+    }
+    else if(units <= 200)
+    {
+        billAmount = (100 * 1.50) +
+                     ((units - 100) * 2.50);
+    }
+    else if(units <= 500)
+    {
+        billAmount = (100 * 1.50) +
+                     (100 * 2.50) +
+                     ((units - 200) * 4.00);
+    }
+    else
+    {
+        billAmount = (100 * 1.50) +
+                     (100 * 2.50) +
+                     (300 * 4.00) +
+                     ((units - 500) * 6.00);
+    }
+    if(billAmount > 1000)
+    {
+        surcharge = billAmount * 0.10;
+    }
+    else
+    {
+        surcharge = 0;
+    }
+    totalBill = billAmount + surcharge;
+    printf("\n=====================================\n");
+    printf("         ELECTRICITY BILL\n");
+    printf("=====================================\n");
+    printf("Consumer Number : %d\n", consumerNo);
+    printf("Consumer Name   : %s\n", consumerName);
+    printf("Units Consumed  : %d\n", units);
+    printf("Bill Amount     : Rs. %.2f\n", billAmount);
+    printf("Surcharge       : Rs. %.2f\n", surcharge);
+    printf("Total Bill      : Rs. %.2f\n", totalBill);
+    printf("=====================================\n");
+    return 0;
+}
